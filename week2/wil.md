@@ -43,6 +43,7 @@
 - GitHub Projects: 칸반 보드 기반 진척도 관리
 - CODEX 워크샵: 시스템 설계 문서 없이 요구사항만으로 Codex에 '멀티 프롬프트 생성기'를 만들게 함. 하나의 index 파일에 모든 로직이 들어가 구조는 이상하나 MVP는 동작
 - 수요 코딩회: '세계 이슈 맵'(세계의 전쟁·경제·정치·자연재해 기사를 수집하여 지도에 위치 맵핑) 개발. Cursor로 기획부터 모듈 단위 코드 작성까지 세밀하게 제어하며 진행
+- 퀴즈: 6문제 중 5문제를 틀림. 파이썬 자료구조의 mutable/immutable 개념을 제대로 이해하지 못한 것이 원인. 오답을 통해 리스트(mutable)와 정수, 튜플, 문자열(immutable)의 동작 차이를 깊이 공부할 수 있는 기회가 됨
 
 
 ## 5. 다음 주 계획
@@ -56,4 +57,4 @@
 
 ### 📎 참고 링크
 - https://github.com/HyungminYoon1/SW-AI-W02-05-Algorithm/tree/main/week2
-- 
+- https://github.com/HyungminYoon1/global-issue-map
