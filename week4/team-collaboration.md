@@ -63,5 +63,5 @@
 2026-03-20 | basic 문제 1, 2, 3번을 풀고 동료학습 + [트리] Maximum Depth of Binary Tree
 2026-03-21 | basic 문제 4, 5, 6번을 풀고 동료학습 + [이진 검색 트리] Average of Levels in Binary Tree
 2026-03-23 | 하 문제 2개 (점프왕쩰리, 바이러스)를 풀고 동료학습 + [그래프] Number of Islands + 파이썬 클래스 학습
-2026-03-24 | 하, 중 문제(각 1 이상)를 풀고 동료학습 + [그래프 BFS] Snakes and Ladders
-2026-03-25 | 리액트 DOM 구조 학습 및 코드 구현
+2026-03-24 | 리액트 DOM, dff 구조 동료학습 + [그래프 BFS] Snakes and Ladders
+2026-03-25 | 리액트 DOM 구조 코드 구현
