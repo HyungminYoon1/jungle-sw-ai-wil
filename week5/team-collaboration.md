@@ -60,8 +60,8 @@
 
 ## 7. 일일 팀 목표 설정
 
-2026-03-27 | basic DP 2개를 풀고 동료학습 
-2026-03-28 | basic Greedy 2개를 풀고 동료학습 + 하 문제 2개 (피보나치 수 2, 01타일) / CS:APP 발표 주제 설정
-2026-03-30 | 하 문제 2개 (동전 0, 잃어버린 괄호) + [DP] Climbing Stairs 풀이 공유+ [DP] House Robber 풀이 공유 + [DP] Word Break 풀이 연습 *코어타임 코딩 테스트는 미리 풀어와서 코어타임 시간에 발표 / CS:APP 동료학습
+2026-03-27 | basic DP 2개 + basic Greedy 2개를 풀고 동료학습
+2026-03-28 | 하 문제 4개 (피보나치 수 2, 01타일, 동전 0, 잃어버린 괄호) / CS:APP 발표 주제 설정
+2026-03-30 | [DP] Climbing Stairs 풀이 공유+ [DP] House Robber 풀이 공유 + [DP] Word Break 풀이 연습 *코어타임 코딩 테스트는 미리 풀어와서 코어타임 시간에 발표 / CS:APP 동료학습
 2026-03-31 | 중 문제 2개 (동전, LCS) + 퀴즈 대비 / CS:APP 동료학습
 2026-04-01 | React Component/State/Hooks 구현
