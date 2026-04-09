@@ -21,7 +21,7 @@
 
 | 과제/항목 | 완료 | 비고 |
 |-----------|:----:|------|
-| Linux/gcc 사용법 학습 | □ | |
+| Linux/gcc 사용법 학습 | ☑ | |
 | C언어 학습 (변수·함수·구조체·포인터) | ☑ | |
 | Linked List 구현 | ☑ | Data Structures |
 | Stack / Queue 구현 | ☑ | Data Structures |
@@ -37,7 +37,7 @@
 | 항목 | 완료 | 비고 |
 |------|:----:|------|
 | 수요 코딩회 GitHub Repository 주소 제출 | ☑ | 목요일 오후 6시 |
-| 핵심 역량 목표 달성률 평가 (goal-achievement.md) | □ | |
-| WIL 작성 (wil.md) | □ | |
-| WIL 블로그 포럼 등록 | □ | WEEK6 태그 |
-| 동료피드백 | □ | 차주 발제 시간 |
+| 핵심 역량 목표 달성률 평가 (goal-achievement.md) | ☑ | |
+| WIL 작성 (wil.md) | ☑ | |
+| WIL 블로그 포럼 등록 | ☑ | WEEK6 태그 |
+| 동료피드백 | ☑ | 차주 발제 시간 |
