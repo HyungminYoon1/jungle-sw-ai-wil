@@ -25,6 +25,24 @@ config.json
 # 로그
 *.log
 
+# C/C++ 빌드 부산물
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+*.exp
+*.ilk
+*.pdb
+*.idb
+*.pch
+*.iobj
+*.ipdb
+
 # 로컬 파일
 local/
 output/
