@@ -11,9 +11,9 @@
 | 핵심 역량 목표 수립 (goal.md) | ☑ | |
 | AI 활용 원칙 수립 (ai-principles.md) | ☑ | |
 | 이번 주 할 일(업무) 검토 | ☑ | week7 공지사항 확인 |
-| 팀 협업 룰/팁 정리 및 합의 (team-collaboration.md) | □ | |
-| 개인 GitHub Projects 주소 제출 | □ | 금요일 24:00 |
-| 개인 GitHub 레포지토리 주소 제출 | □ | 금요일 24:00 |
+| 팀 협업 룰/팁 정리 및 합의 (team-collaboration.md) | ☑ | |
+| 개인 GitHub Projects 주소 제출 | ☑ | 금요일 24:00 |
+| 개인 GitHub 레포지토리 주소 제출 | ☑ | 금요일 24:00 |
 
 ---
 
@@ -22,21 +22,21 @@
 | 과제/항목 | 완료 | 비고 |
 |-----------|:----:|------|
 | Ubuntu / 실습 환경 확인 | ☑ | malloc-lab |
-| CSAPP 9장 학습 | □ | Optional, 9.9절 우선 |
-| 학습 키워드 정리 | □ | 시스템 콜, 데이터 세그먼트, 메모리 단편화, `sbrk/mmap` |
-| Malloc Lab `mm_init` 구현 | □ | |
-| Malloc Lab `mm_malloc` 구현 | □ | |
-| Malloc Lab `mm_free` 구현 | □ | |
-| Malloc Lab `mm_realloc` 구현 | □ | |
-| `mdriver` 채점 및 점수 확인 | □ | implicit list 우선 |
-| 퀴즈 (화요일) | □ | 학습 키워드, C언어 코딩 |
-| 수요 코딩회 B+ Tree 인덱스 설계 | □ | 자동 ID, 인덱스 등록, 조회 경로 |
-| `WHERE id = ?` 조회 구현 | □ | 인덱스 사용 |
-| 비인덱스 조회 구현 | □ | 선형 탐색 비교 |
-| 대량 데이터 삽입 테스트 | □ | 1,000,000건 이상 목표 |
-| 성능 비교 테스트 | □ | 인덱스 조회 vs 선형 탐색 |
-| 테스트 케이스 작성 | □ | 단위/기능/엣지 |
-| README 정리 | □ | 발표 기준 |
+| CSAPP 9장 학습 | ☑ | Optional, 9.9절 우선 |
+| 학습 키워드 정리 | ☑ | 시스템 콜, 데이터 세그먼트, 메모리 단편화, `sbrk/mmap` |
+| Malloc Lab `mm_init` 구현 | ☑ | |
+| Malloc Lab `mm_malloc` 구현 | ☑ | |
+| Malloc Lab `mm_free` 구현 | ☑ | |
+| Malloc Lab `mm_realloc` 구현 | ☑ | |
+| `mdriver` 채점 및 점수 확인 | □☑| implicit list 우선 |
+| 퀴즈 (화요일) | ☑ | 학습 키워드, C언어 코딩 |
+| 수요 코딩회 B+ Tree 인덱스 설계 | ☑ | 자동 ID, 인덱스 등록, 조회 경로 |
+| `WHERE id = ?` 조회 구현 | ☑ | 인덱스 사용 |
+| 비인덱스 조회 구현 | ☑ | 선형 탐색 비교 |
+| 대량 데이터 삽입 테스트 | ☑ | 1,000,000건 이상 목표 |
+| 성능 비교 테스트 | ☑ | 인덱스 조회 vs 선형 탐색 |
+| 테스트 케이스 작성 | ☑ | 단위/기능/엣지 |
+| README 정리 | ☑ | 발표 기준 |
 
 ---
 
@@ -44,9 +44,9 @@
 
 | 항목 | 완료 | 비고 |
 |------|:----:|------|
-| 수요 코딩회 GitHub Repository 주소 제출 | □ | 목요일 12:00, 팀당 1명 |
-| 핵심 역량 목표 달성률 평가 (goal-achievement.md) | □ | |
-| WIL 작성 (wil.md) | □ | |
-| WIL 블로그 포럼 등록 | □ | WEEK7 태그 |
-| 동료피드백 | □ | 차주 발제 시간 |
+| 수요 코딩회 GitHub Repository 주소 제출 | ☑ | 목요일 12:00, 팀당 1명 |
+| 핵심 역량 목표 달성률 평가 (goal-achievement.md) | ☑ | |
+| WIL 작성 (wil.md) | ☑ | |
+| WIL 블로그 포럼 등록 | ☑ | WEEK7 태그 |
+| 동료피드백 | ☑ | 차주 발제 시간 |
 
