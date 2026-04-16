@@ -12,8 +12,8 @@
 | AI 활용 원칙 수립 (ai-principles.md) | ☑ | |
 | 이번 주 할 일(업무) 검토 | ☑ | week8 공지사항 확인 |
 | 팀 협업 룰/팁 정리 및 합의 (team-collaboration.md) | ☑ | |
-| 개인 GitHub Projects 주소 제출 | □ | 금요일 24:00 |
-| 개인 GitHub 레포지토리 주소 제출 | □ | 금요일 24:00 |
+| 개인 GitHub Projects 주소 제출 | ☑ | 금요일 24:00 |
+| 개인 GitHub 레포지토리 주소 제출 | ☑ | 금요일 24:00 |
 
 ---
 
@@ -21,7 +21,7 @@
 
 | 과제/항목 | 완료 | 비고 |
 |-----------|:----:|------|
-| Ubuntu / Docker 실습 환경 확인 | □ | webproxy-lab |
+| Ubuntu / Docker 실습 환경 확인 | ☑ | webproxy-lab |
 | 학습 키워드 정리 | □ | BSD socket, IP, TCP, HTTP, file descriptor, DNS |
 | 네트워크 기본 흐름 학습 | □ | CSAPP 11장 또는 대체 자료, MUST |
 | socket 기반 client/server 실습 | □ | 요청/응답 흐름 확인 |
