@@ -22,11 +22,11 @@
 | 과제/항목 | 완료 | 비고 |
 |-----------|:----:|------|
 | Ubuntu / Docker 실습 환경 확인 | ☑ | webproxy-lab |
-| 학습 키워드 정리 | □ | BSD socket, IP, TCP, HTTP, file descriptor, DNS |
-| 네트워크 기본 흐름 학습 | □ | CSAPP 11장 또는 대체 자료, MUST |
-| socket 기반 client/server 실습 | □ | 요청/응답 흐름 확인 |
-| tiny 웹서버 구현 | □ | `tiny/tiny.c`, `tiny/cgi-bin/adder.c` |
-| CSAPP 11장 학습 | □ | Optional |
+| 학습 키워드 정리 | ☑ | BSD socket, IP, TCP, HTTP, file descriptor, DNS |
+| 네트워크 기본 흐름 학습 | ☑ | CSAPP 11장 또는 대체 자료, MUST |
+| socket 기반 client/server 실습 | ☑ | 요청/응답 흐름 확인 |
+| tiny 웹서버 구현 | ☑ | `tiny/tiny.c`, `tiny/cgi-bin/adder.c` |
+| CSAPP 11장 학습 | ☑ | Optional |
 | 숙제 문제 3개 이상 풀이 | □ | 11.6c, 7, 9, 10, 11 중 |
 | proxy 과제 도전 | □ | `proxy.c` |
 | proxy 병렬 처리 (심화) | □ | |
