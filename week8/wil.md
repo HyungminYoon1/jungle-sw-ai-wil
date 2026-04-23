@@ -68,11 +68,11 @@
 
 ## 5. 다음 주 계획
 - 다음 주부터는 PintOS `Project 1 - Threads`에 들어간다. 이번 주까지는 사용자 공간의 서버와 네트워크 요청을 다뤘다면, 다음 주부터는 커널 수준 스레드의 생성, 스케줄링, 동기화를 직접 구현하는 방향으로 학습 범위가 바뀐다.
-- 첫날에는 팀 GitHub Projects와 팀 repository를 준비하고, 개인별 branch를 나눠 작업할 계획이다. 최종 master branch가 하나의 팀 결과물이 되므로 PR 리뷰와 병합 기준을 더 엄격하게 가져가야 한다.
+- 첫날에는 팀 GitHub Projects와 팀 repository를 준비하고, 개인별 branch를 나눠 작업할 계획이다. 최종 main branch가 하나의 팀 결과물이 되므로 PR 리뷰와 병합 기준을 더 엄격하게 가져가야 한다.
 - 실습 환경은 Ubuntu 22.04 또는 Docker 기반 PintOS 환경으로 맞추고, 테스트 실행 방법을 먼저 확인한다. 환경 문제로 시간을 잃지 않도록 첫날에 빌드, 기본 테스트 실행, 테스트 유틸 사용 가능 여부를 확인할 예정이다.
 - 학습 키워드는 `threads`, `synchronization`, `priority scheduling`, `priority inversion`, `MLFQS(Multi Level Queue Scheduling)`를 중심으로 잡는다. 특히 semaphore, lock, condition variable이 race condition을 어떻게 막는지, priority donation이 왜 필요한지, MLFQS가 어떤 기준으로 우선순위를 계산하는지 정리할 계획이다.
 - 구현 목표는 `Project 1` 테스트 케이스 통과다. 옵션 구현이 따로 있는 과제가 아니라 Project 1 범위 전체를 구현해야 하므로, alarm clock, priority scheduling, priority donation, synchronization primitive, MLFQS 관련 테스트를 단계별로 통과시키는 방식으로 접근하려고 한다.
-- 매일 팀 코어타임 시간에는 개인 branch의 구현 내용을 PR로 올리고, 팀원들과 함께 핵심 로직과 테스트 결과를 확인한 뒤 master에 병합하는 흐름을 만들 계획이다. 서버 과제에서 README와 테스트가 중요했던 것처럼, PintOS에서도 어떤 테스트가 왜 실패하는지와 어떤 수정으로 통과했는지를 기록할 필요가 있다.
+- 매일 팀 코어타임 시간에는 개인 branch의 구현 내용을 PR로 올리고, 팀원들과 함께 핵심 로직과 테스트 결과를 확인한 뒤 main에 병합하는 흐름을 만들 계획이다. 서버 과제에서 README와 테스트가 중요했던 것처럼, PintOS에서도 어떤 테스트가 왜 실패하는지와 어떤 수정으로 통과했는지를 기록할 필요가 있다.
 - 다음 주 목요일 오전 주간 공유 발표에는 프로젝트 팀 구성, 구현 및 트러블슈팅, 회고가 포함되어야 하므로, 주중에 문제를 해결할 때마다 미리 발표 자료에 넣을 수 있는 근거를 남길 계획이다.
 
 ---
