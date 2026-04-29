@@ -73,16 +73,15 @@
 
 2026-04-24(금) | PintOS Threads 특강 참석 / 팀 repository와 GitHub Projects 제출 / Ubuntu 22.04 또는 Docker 환경 확인 / KAIST GitBook Introduction, Getting Started 학습 / Project 1 Threads 문서 학습
 
-
 2026-04-25(토) | 코드, 커밋, 주석 스타일 공유 / alarm clock 설계 및 구현 / `alarm-*` 테스트 우선 확인 / priority scheduling 설계
 
 2026-04-26(일) | 복습
 
-2026-04-27(월) | ready list 정렬, preemption, priority 변경 흐름 구현 및 테스트 / 운영체제 특강 참석 / priority donation 설계 및 구현 / nested donation, donation chain, lock 관련 테스트 점검
+2026-04-27(월) | ready list 정렬, preemption, priority 변경 흐름 학습 / 운영체제 특강 참석
 
-2026-04-28(화) | 퀴즈 참여 / semaphore, lock, condition variable 우선순위 처리 점검 / MLFQS 설계 및 구현 시작
+2026-04-28(화) | 퀴즈 참여 / ready list, preemption, priority 변경 흐름 구현
 
-2026-04-29(수) | MLFQS 구현 및 `mlfqs-*` 테스트 점검 / 전체 테스트 회귀 확인 / 주간 공유 발표 자료 준비
+2026-04-29(수) | 코드 리뷰 및 구현한 내용 복습 / 주간 공유 발표 자료 준비
 
 2026-04-30(목) | 주간 공유 발표 / WIL 작성 및 WEEK9 포럼 등록 / 회고
 
@@ -94,3 +93,8 @@ PintOS 공식 문서 읽고 모르는 개념 질문 정리
 테스트 실패 시 실패명, 로그, 수정 가설 기록
 코어타임 전에 오늘 병합할 PR과 남은 실패 테스트 공유
 주간 발표에 넣을 구현 내용과 트러블슈팅 근거 정리
+
+*이하 내용은 목요일 전까지 구현하지 못해 각자 구현
+- semaphore, lock, condition variable 우선순위 처리 점검
+- priority donation 설계 및 구현 / nested donation, donation chain, lock 관련 테스트 점검
+- MLFQS 구현 및 `mlfqs-*` 테스트 점검 / 전체 테스트 회귀 확인
