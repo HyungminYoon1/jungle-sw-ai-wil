@@ -8,14 +8,14 @@
 
 | 항목 | 완료 | 비고 |
 |------|:----:|------|
-| 핵심 역량 목표 수립 (goal.md) | □ | |
-| AI 활용 원칙 수립 (ai-principles.md) | □ | |
-| 이번 주 할 일(업무) 검토 | □ | PintOS Project 2 - User Programs 공지 확인 |
-| 팀 협업 룰/팁 정리 및 합의 (team-collaboration.md) | □ | |
-| 팀 GitHub Projects 주소 제출 | □ | 금요일 24:00, 팀당 1명 |
-| PintOS 기초 특강 - User Program 참석 | □ | 금요일 오전 10시 |
-| PintOS 실습 환경 확인 | □ | Ubuntu 22.04 LTS x86_64 또는 Docker |
-| 테스트 실행 도구 확인 | □ | 기본 테스트 또는 pintos-util |
+| 핵심 역량 목표 수립 (goal.md) | ☑ | |
+| AI 활용 원칙 수립 (ai-principles.md) | ☑ | |
+| 이번 주 할 일(업무) 검토 | ☑ | PintOS Project 2 - User Programs 공지 확인 |
+| 팀 협업 룰/팁 정리 및 합의 (team-collaboration.md) | ☑ | |
+| 팀 GitHub Projects 주소 제출 | ☑ | 금요일 24:00, 팀당 1명 |
+| PintOS 기초 특강 - User Program 참석 | ☑ | 금요일 오전 10시 |
+| PintOS 실습 환경 확인 | ☑ | Ubuntu 22.04 LTS x86_64 또는 Docker |
+| 테스트 실행 도구 확인 | ☑ | 기본 테스트 또는 pintos-util |
 
 ---
 
@@ -23,9 +23,9 @@
 
 | 과제/항목 | 완료 | 비고 |
 |-----------|:----:|------|
-| KAIST GitBook Project 2 User Programs 학습 | □ | |
+| KAIST GitBook Project 2 User Programs 학습 | ☑ | |
 | KAIST GitBook Project 2 FAQ 학습 | □ | |
-| ELF loader / process 실행 흐름 학습 | □ | |
+| ELF loader / process 실행 흐름 학습 | ☑ | |
 | User mode / Kernel mode 전환 흐름 학습 | □ | |
 | system call 진입 흐름 학습 | □ | syscall handler |
 | user pointer / user address 검증 설계 | □ | bad pointer, boundary |
