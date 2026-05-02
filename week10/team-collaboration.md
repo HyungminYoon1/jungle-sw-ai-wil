@@ -88,9 +88,9 @@
 
 2026-05-01(금) | PintOS User Program 특강 참석 / 팀 GitHub Projects 제출 / 개인별 Project 2 User Programs 문서와 FAQ 학습 / 테스트 실행 환경 확인 / 76개 테스트 묶음 분류 / 2시간 자율 학습 후 30분 팀 토의 / argument passing 설계 착수
 
-2026-05-02(토) | argument passing 구현 / syscall handler 기본 구조 / `args-*`, `halt`, `exit` 테스트 확인
+2026-05-02(토) | argument passing 구현 / syscall handler 기본 구조 확인
 
-2026-05-03(일) | *팀 활동 없음(개인별 학습 및 코드 구현) / fd table 설계 / create-open-close 구현 / create/open/close 계열 테스트 확인
+2026-05-03(일) | *팀 활동 없음(개인별 학습 및 코드 구현) / `args-*`, `halt`, `exit` 테스트 확인 / fd table 설계 / create-open-close 구현 / create/open/close 계열 테스트 확인 
 
 2026-05-04(월) | read/write 구현 / stdin/stdout 처리 / user pointer 및 boundary 검증 / read/write, bad pointer 기본 테스트 확인
 
