@@ -34,14 +34,14 @@
 | halt / exit syscall 구현 | □ | |
 | file descriptor table 설계 | □ | fd allocation, close |
 | file syscall 구현 | □ | create/open/read/write/close |
-| fork 구현 | □ | parent-child sync |
-| exec 구현 | □ | load 실패 처리 |
-| wait 구현 | □ | exit status, 중복 wait |
+| fork 구현 | ☑ | parent-child sync |
+| exec 구현 | ☑ | load 실패 처리 |
+| wait 구현 | ☑ | exit status, 중복 wait |
 | executable write deny 처리 | □ | `rox-*` |
 | robustness / bad pointer 테스트 대응 | □ | bad-read/write/jump |
-| 화요일 퀴즈 준비 | □ | PintOS, C언어 |
-| 매일 개인 branch 작업 | □ | 기능 단위 commit |
-| 매일 코어타임 PR 리뷰 | □ | main 병합 전 리뷰 |
+| 수요일 퀴즈 준비 | □ | PintOS, C언어 |
+| 매일 개인 branch 작업 | ☑ | 기능 단위 commit |
+| 매일 코어타임 PR 리뷰 | ☑ | main 병합 전 리뷰 |
 | 테스트 실패 로그 기록 | □ | 실패명, 원인, 수정, 재실행 결과 |
 | 주간 공유 발표 자료 초안 작성 | □ | 구현, 트러블슈팅, 회고 |
 
@@ -53,35 +53,35 @@
 
 | 테스트 | 완료 | 비고 |
 |--------|:----:|------|
-| args-none | □ | |
-| args-single | □ | |
-| args-multiple | □ | |
-| args-many | □ | |
-| args-dbl-space | □ | |
-| halt | □ | |
-| exit | □ | |
+| args-none | ☑ | |
+| args-single | ☑ | |
+| args-multiple | ☑ | |
+| args-many | ☑ | |
+| args-dbl-space | ☑ | |
+| halt | ☑ | |
+| exit | ☑ | |
 
 ### File Syscall - Create / Open / Close
 
 | 테스트 | 완료 | 비고 |
 |--------|:----:|------|
-| create-normal | □ | |
+| create-normal | ☑ | |
 | create-empty | □ | |
 | create-null | □ | |
 | create-bad-ptr | □ | |
 | create-long | □ | |
 | create-exists | □ | |
-| create-bound | □ | |
+| create-bound | ☑ | |
 | open-normal | □ | |
-| open-missing | □ | |
+| open-missing | ☑ | |
 | open-boundary | □ | |
-| open-empty | □ | |
-| open-null | □ | |
+| open-empty | ☑ | |
+| open-null | ☑ | |
 | open-bad-ptr | □ | |
 | open-twice | □ | |
 | close-normal | □ | |
 | close-twice | □ | |
-| close-bad-fd | □ | |
+| close-bad-fd | ☑ | |
 
 ### File Syscall - Read / Write
 
@@ -91,35 +91,35 @@
 | read-bad-ptr | □ | |
 | read-boundary | □ | |
 | read-zero | □ | |
-| read-stdout | □ | |
-| read-bad-fd | □ | |
+| read-stdout | ☑ | |
+| read-bad-fd | ☑ | |
 | write-normal | □ | |
 | write-bad-ptr | □ | |
 | write-boundary | □ | |
 | write-zero | □ | |
-| write-stdin | □ | |
-| write-bad-fd | □ | |
+| write-stdin | ☑ | |
+| write-bad-fd | ☑ | |
 
 ### Process Control
 
 | 테스트 | 완료 | 비고 |
 |--------|:----:|------|
-| fork-once | □ | |
-| fork-multiple | □ | |
-| fork-recursive | □ | |
+| fork-once | ☑ | |
+| fork-multiple | ☑ | |
+| fork-recursive | ☑ | |
 | fork-read | □ | |
 | fork-close | □ | |
-| fork-boundary | □ | |
-| exec-once | □ | |
-| exec-arg | □ | |
-| exec-boundary | □ | |
-| exec-missing | □ | |
-| exec-bad-ptr | □ | |
+| fork-boundary | ☑ | |
+| exec-once | ☑ | |
+| exec-arg | ☑ | |
+| exec-boundary | ☑ | |
+| exec-missing | ☑ | |
+| exec-bad-ptr | ☑ | |
 | exec-read | □ | |
-| wait-simple | □ | |
-| wait-twice | □ | |
-| wait-killed | □ | |
-| wait-bad-pid | □ | |
+| wait-simple | ☑ | |
+| wait-twice | ☑ | |
+| wait-killed | ☑ | |
+| wait-bad-pid | ☑ | |
 
 ### Robustness / File Interaction
 
@@ -130,12 +130,12 @@
 | rox-simple | □ | |
 | rox-child | □ | |
 | rox-multichild | □ | |
-| bad-read | □ | |
-| bad-write | □ | |
-| bad-read2 | □ | |
-| bad-write2 | □ | |
-| bad-jump | □ | |
-| bad-jump2 | □ | |
+| bad-read | ☑ | |
+| bad-write | ☑ | |
+| bad-read2 | ☑ | |
+| bad-write2 | ☑ | |
+| bad-jump | ☑ | |
+| bad-jump2 | ☑ | |
 | lg-create | □ | |
 | lg-full | □ | |
 | lg-random | □ | |

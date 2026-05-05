@@ -92,11 +92,11 @@
 
 2026-05-03(일) | *팀 활동 없음(개인별 학습 및 코드 구현) / `args-*`, `halt`, `exit` 테스트 확인 / fd table 설계 / create-open-close 구현 / create/open/close 계열 테스트 확인 
 
-2026-05-04(월) | read/write 구현 / stdin/stdout 처리 / user pointer 및 boundary 검증 / read/write, bad pointer 기본 테스트 확인
+2026-05-04(월) | read/write 구현 / stdin/stdout 처리 / user pointer 및 boundary 검증 / read/write, bad pointer 기본 테스트 확인 / fork 기본 구현
 
-2026-05-05(화) | 퀴즈 참여 / fork 기본 구현 / exec-load 실패 처리 / wait 기본 동기화 / fork/exec/wait 기본 테스트 확인
+2026-05-05(화) | exec-load 실패 처리 / wait 기본 동기화 / fork/exec/wait 구현 및 기본 테스트 확인 / bad-* 구현 및 테스트 확인
 
-2026-05-06(수) | rox, multi, bad-*, lg/sm/syn, multi-oom 등 robustness 테스트 점검 / Project 2 전체 회귀 테스트 / 발표 자료 준비
+2026-05-06(수) | 퀴즈 참여 / rox, multi, lg/sm/syn, multi-oom 등 robustness 테스트 점검 / Project 2 전체 회귀 테스트 / 발표 자료 준비
 
 2026-05-07(목) | 주간 공유 발표 / WIL 작성 및 WEEK10 포럼 등록 / 남은 실패 테스트와 회고 정리 / 10주차 동료피드백
 
