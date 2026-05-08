@@ -72,17 +72,51 @@
 
 작업은 담당자별 장기 분업이 아니라 Virtual Memory 구현 흐름과 테스트 묶음을 기준으로 4명이 함께 순차 진행한다. 한 세션에서는 Driver 1명과 공동 검토자 3명을 두고, 역할은 30-60분 단위로 교체한다.
 
-| 작업 묶음 | 관련 테스트 | 중점 확인 포인트 |
+2026-05-08(금)은 개인 학습과 환경 세팅, 2026-05-09(토)과 2026-05-10(일)은 `fork()`와 VM 전체 흐름을 개인적으로 학습하는 날로 두고, 실제 VM 코드 공동 구현은 2026-05-11(월)부터 2026-05-20(수)까지 진행한다. 2026-05-17(일)은 공동 구현 범위에서 제외하고, 2026-05-21(목)은 최종 발표와 제출 정리에 집중한다.
+
+### 6.1 매일 공통 루틴
+
+| 구간 | 할 일 | 산출물 |
 |------|------|------|
-| 기준선 / 회귀 상태 확인 | `args-*`, `halt`, `exit`, file syscall 일부 | Project 1/2 구현이 VM에서 전제가 되는 지점 |
-| SPT / frame claim | 빌드, `spt_find_page` 흐름 리뷰 | `pg_round_down()`, SPT insert/find/remove, page-frame 연결 |
-| Lazy loading | `lazy-file`, `lazy-anon`, 기본 userprog 테스트 | uninit page initializer, aux lifetime, ELF segment lazy load |
-| Page fault / stack growth | `pt-bad-*`, `pt-write-code*`, `pt-grow-*` | valid fault와 invalid fault 구분, stack growth 조건 |
-| SPT copy / fork cleanup | `fork-*`, `multi-*`, `page-linear`, `page-merge-*` | child SPT 처리, loaded/uninit page 복제, process exit 자원 정리 |
-| mmap / file-backed page | `mmap-*`, `mmap-inherit`, `swap-file` | fd와 file object lifetime, dirty write-back, munmap cleanup |
-| Eviction / swap | `page-shuffle`, `page-merge-*`, `swap-*` | frame table, victim selection, swap slot 할당/회수, swap in/out |
-| 전체 회귀 테스트 | userprog, threads alarm/priority, filesys/base | Project 1/2와 기본 파일 시스템 동작 유지 |
-| Extra 판단 | `cow-simple` | 필수 VM 안정화 이후 COW 진행 여부 결정 |
+| 시작 30분 | 전날 diff, 실패 테스트, panic log, `.output` 확인. 월요일 첫 시작은 공유된 User Programs 통과 commit/branch 고정과 smoke test로 대체 | 오늘 첫 번째 실패 지점 1개 확정 |
+| 학습 60-90분 | GitBook과 `local/week11-12_study_docs`에서 오늘 구현 범위만 읽기 | 팀원이 답해야 할 질문 3-5개 정리 |
+| 구현 세션 1 | Driver 1명이 작은 함수 단위로 작성, 3명이 설계·cleanup·테스트 조건 확인 | 빌드 가능한 작은 변경 |
+| 테스트 루프 | 가까운 테스트 1-3개 실행 후 같은 묶음으로 확장 | 통과/실패 테스트와 재현 명령 기록 |
+| 구현 세션 2 | Driver 교체 후 같은 실패 지점을 이어서 처리 | PR 후보 변경 묶음 |
+| 종료 30분 | 바뀐 구조체 필드, 자원 소유권, 남은 실패 원인 정리 | PR 설명/WIL/이슈에 남길 문장 |
+
+### 6.2 날짜별 학습·구현 계획
+
+| 날짜 | 핵심 목표 | 작성/수정 모듈 | 대표 함수·구조체 | 확인 테스트와 완료 기준 |
+|------|------|------|------|------|
+| 2026-05-09(토) | 개인 학습: `fork()`와 Project 2 process 흐름 복습 | 코드 수정 없음. `pintos/userprog/process.c`, `pintos/userprog/syscall.c`, `pintos/include/threads/thread.h` 읽기 | `process_fork()`, `__do_fork()`, `process_exec()`, `process_exit()`, `process_wait()`, fd table, child status 구조 | 질문 목록 작성: fork에서 register, fd table, address space가 각각 어디서 복제되는지 설명 |
+| 2026-05-10(일) | 개인 학습: VM 큰 흐름, SPT, lazy loading, page fault 예습 | 코드 수정 없음. `10_pintos_vm_flow_mermaid.md`, GitBook Project 3, `pintos/vm/*` 읽기 | `vm_alloc_page_with_initializer()`, `vm_try_handle_fault()`, `vm_do_claim_page()`, `lazy_load_segment()`, `vm_stack_growth()` | 질문 목록 작성: SPT, page, frame, pml4의 역할 차이와 fault 복구 흐름 설명 |
+| 2026-05-11(월) | 공유된 통과 commit 고정 후 SPT, frame claim 시작 | `pintos/include/vm/vm.h`, `pintos/vm/vm.c` | `struct supplemental_page_table`, `struct page`, `struct frame`, `supplemental_page_table_init()`, `spt_find_page()`, `spt_insert_page()`, `spt_remove_page()`, `vm_get_frame()`, `vm_claim_page()`, `vm_do_claim_page()` | 기준 branch/commit 확정, smoke test `args-none`, `args-multiple`, `halt`, `exit`, `fork-once`; SPT key와 page-frame rollback 설명 |
+| 2026-05-12(화) | ELF lazy loading과 VM 실행 경로 복구 | `pintos/userprog/process.c`, `pintos/vm/uninit.c`, `pintos/vm/vm.c`, `pintos/include/vm/vm.h` | `load_segment()`, `lazy_load_segment()`, `vm_alloc_page_with_initializer()`, `uninit_new()`, `uninit_initialize()`, `uninit_destroy()`, `setup_stack()` | `lazy-file`, `lazy-anon`, `args-none`, `args-single`, `args-multiple`, `halt`, `exit`; aux 생성/해제 시점을 PR에 기록 |
+| 2026-05-13(수) | page fault 조건, stack growth, user pointer 회귀 | `pintos/userprog/exception.c`, `pintos/userprog/syscall.c`, `pintos/include/threads/thread.h`, `pintos/vm/vm.c` | `page_fault()`, `vm_try_handle_fault()`, `vm_stack_growth()`, syscall 경로 user rsp 저장 필드, user buffer validation helper | `pt-bad-addr`, `pt-bad-read`, `pt-write-code`, `pt-write-code2`, `pt-grow-stack`, `pt-grow-stk-sc`, `pt-big-stk-obj`, `pt-grow-bad`; 실패 조건을 invalid/write/stack 후보로 분류 |
+| 2026-05-14(목) | 주간 공유, SPT copy/kill, fork/page 기반 검증 | `pintos/vm/vm.c`, `pintos/userprog/process.c`, `pintos/include/vm/vm.h`, PR/WIL 문서 | `supplemental_page_table_copy()`, `supplemental_page_table_kill()`, `vm_dealloc_page()`, `process_fork()`, `__do_fork()` | 오전 주간 공유 후 `fork-once`, `fork-read`, `fork-boundary`, `multi-recurse`, `page-linear`, `page-merge-seq`; 발표에는 구현 현황과 남은 리스크 포함 |
+| 2026-05-15(금) | page 계열 안정화, eviction 준비 | `pintos/vm/vm.c`, `pintos/include/vm/vm.h` | frame table 자료구조, frame list/lock, victim 후보 순회 함수, accessed/dirty bit 확인 지점 | `page-parallel`, `page-merge-par`, `page-merge-stk`, `page-merge-mm`, `page-shuffle`; frame table 소유권과 lock 범위 기록 |
+| 2026-05-16(토) | mmap/munmap 기본과 file-backed page | `pintos/userprog/syscall.c`, `pintos/vm/file.c`, `pintos/include/vm/file.h`, `pintos/include/threads/thread.h` | `mmap()`, `munmap()`, `do_mmap()`, `do_munmap()`, `file_backed_initializer()`, `file_backed_swap_in()`, `file_backed_destroy()`, mmap range metadata | `mmap-read`, `mmap-close`, `mmap-unmap`; fd close와 mapping lifetime 분리 여부 확인 |
+| 2026-05-18(월) | mmap invalid case, dirty write-back, file lifetime | `pintos/userprog/syscall.c`, `pintos/vm/file.c`, `pintos/vm/vm.c` | mmap 인자 검증, overlap 검사, `file_reopen()` 정책, dirty bit 확인, `file_write_at()` write-back | `mmap-write`, `mmap-ro`, `mmap-clean`, `mmap-exit`, `mmap-bad-*`, `mmap-over-*`, `mmap-null`, `mmap-zero*`; clean page를 불필요하게 write-back하지 않는지 확인 |
+| 2026-05-19(화) | eviction, anonymous/file-backed swap, fork/mmap 연계 | `pintos/vm/vm.c`, `pintos/vm/anon.c`, `pintos/vm/file.c`, `pintos/userprog/process.c` | `vm_get_victim()`, `vm_evict_frame()`, `anon_swap_in()`, `anon_swap_out()`, `file_backed_swap_out()`, swap block, swap slot bitmap, mmap SPT copy 정책 | `swap-anon`, `swap-iter`, `swap-file`, `swap-fork`, `mmap-inherit`, `mmap-shuffle`; swap slot과 file-backed write-back 책임 기록 |
+| 2026-05-20(수) | VM 전체 회귀, 제출 안정화, 발표/WIL 정리 | 전체 영향 파일, PR/WIL/발표 자료 | 전체 test command, 실패 로그 요약, lifecycle 체크리스트, rollback 필요한 임시 helper 목록 | VM 필수 테스트 묶음, CSV의 userprog 회귀, threads alarm/priority, filesys/base; 남은 실패가 있으면 원인/재현 명령/다음 조치 기록 |
+| 2026-05-21(목) | 최종 공유와 제출 | 발표 자료, WIL, GitHub Projects | 팀 발표 자료, 개인별 2분 발표 내용, WIL URL | 오전 10시 주간 공유, 정오까지 발표 자료와 WIL 제출, 오후 동료피드백/티타임 준비 |
+
+### 6.3 공동 구현 제외일
+
+| 날짜 | 운영 방식 | 개인 권장 활동 |
+|------|------|------|
+| 2026-05-09(토) | 공동 구현 제외 | `fork()`, Project 2 process lifecycle, fd table 복습 |
+| 2026-05-10(일) | 공동 구현 제외 | GitBook Project 3, VM flow diagram, SPT/page fault 질문 정리 |
+| 2026-05-17(일) | 공동 구현 제외 | mmap/swap 설계 복습, 실패 로그 개인 분석, 발표/WIL 초안 작성 |
+
+### 6.4 모듈 소유권 기록 규칙
+
+- 새 구조체 필드를 추가하면 생성 시점, 소유자, 해제 시점, 실패 시 cleanup 경로를 PR에 적는다.
+- `pintos/vm/vm.c`는 SPT, frame, eviction이 모두 모이는 파일이므로 단독 장기 수정하지 않는다.
+- `pintos/userprog/process.c`는 load, stack setup, fork, exit가 함께 걸리므로 VM 변경 후 Project 2 회귀를 같이 확인한다.
+- `pintos/userprog/syscall.c`는 user pointer validation과 `mmap`/`munmap`이 함께 걸리므로 invalid pointer 테스트와 mmap 테스트를 같은 날 확인한다.
+- `pintos/vm/file.c`와 `pintos/vm/anon.c`는 page type별 swap in/out 책임을 나누고, frame free 책임과 중복되지 않게 정리한다.
 
 
 ## 7. 테스트 운영 원칙
