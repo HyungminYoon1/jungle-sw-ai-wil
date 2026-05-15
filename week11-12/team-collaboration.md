@@ -80,7 +80,7 @@
 |------|------|------|
 | 시작 30분 | 전날 diff, 실패 테스트, panic log, `.output` 확인. 월요일 첫 시작은 공유된 User Programs 통과 commit/branch 고정과 smoke test로 대체 | 오늘 첫 번째 실패 지점 1개 확정 |
 | 학습 60-90분 | GitBook과 `local/week11-12_study_docs`에서 오늘 구현 범위만 읽기 | 팀원이 답해야 할 질문 3-5개 정리 |
-| 구현 세션 1 | 월·화는 Driver 1명이 작은 함수 단위로 작성하고 3명이 설계·cleanup·테스트 조건 확인. 수요일부터는 각 페어가 Driver/Navigator로 나누어 같은 목표를 병렬 진행 | 빌드 가능한 작은 변경 |
+| 구현 세션 1 | 4일(월)·5일(화)는 Driver 1명이 작은 함수 단위로 작성하고 3명이 설계·cleanup·테스트 조건 확인. 6일 수요일부터는 각 페어가 Driver/Navigator로 나누어 같은 목표를 병렬 진행 | 빌드 가능한 작은 변경 |
 | 테스트 루프 | 가까운 테스트 1-3개 실행 후 같은 묶음으로 확장 | 통과/실패 테스트와 재현 명령 기록 |
 | 구현 세션 2 | Driver 교체 후 같은 실패 지점을 이어서 처리하고, 2명:2명 운영 시 페어 간 변경 범위와 실패 지점을 공유 | PR 후보 변경 묶음 |
 | 종료 30분 | 바뀐 구조체 필드, 자원 소유권, 남은 실패 원인 정리 | PR 설명/WIL/이슈에 남길 문장 |
@@ -92,8 +92,8 @@
 - 2026-05-11 실제 구현: SPT 해시 테이블 구조, hash callback, `supplemental_page_table_init()`, `spt_find_page()`, `spt_insert_page()`, `spt_remove_page()` 기초 구현.
 - 2026-05-12 부분 구현: `vm_alloc_page_with_initializer()`의 기본 등록 흐름, `struct page.writable`, `vm_get_frame()`, `vm_claim_page()`, `vm_do_claim_page()`, VM용 첫 stack page claim, `uninit_destroy()`의 aux 기본 해제. 단, aux 실패 경로와 `VM_FILE` 연계는 후속 구현에서 재점검한다.
 - 2026-05-13~14 실제 구현/통합: `load_segment()`의 lazy load aux 등록, `lazy_load_segment()`의 file read/zero fill, `page_fault()`에서 `vm_try_handle_fault()` 호출, SPT 기반 lazy page claim, anon swap slot bitmap과 `struct anon_page` 상태 필드가 들어왔다.
-- 2026-05-15 오후 기준 미구현 또는 골격: `supplemental_page_table_kill()`, frame/page cleanup 경로, `vm_stack_growth()`, stack growth 후보 판단, syscall 경로 user `rsp` 저장과 VM-aware user pointer validation, `supplemental_page_table_copy()`, frame table/eviction, file-backed page, `mmap()`/`munmap()`.
-- 2026-05-15 오후~야간 구현 가능 범위: `SPT kill/cleanup + stack growth`를 핵심 목표로 잡는다. 시간이 남으면 syscall user pointer validation을 SPT/lazy page 기준으로 최소 보완하고, `supplemental_page_table_copy()`와 fork 회귀 복구는 2026-05-16 이후로 넘긴다.
+- 2026-05-15 야간 기준 구현 완료: `supplemental_page_table_kill()`, frame/page cleanup 경로, `vm_stack_growth()`, stack growth 후보 판단, syscall 경로 user `rsp` 저장과 VM-aware user pointer validation 최소 보완.
+- 2026-05-16 이후 미구현 또는 골격: `supplemental_page_table_copy()`, fork 기반 page lifecycle, frame table/eviction, file-backed page, `mmap()`/`munmap()`, dirty write-back.
 
 | 날짜 | 핵심 목표 | 작성/수정 모듈 | 대표 함수·구조체 | 상태/산출물 |
 |------|------|------|------|------|
@@ -104,10 +104,10 @@
 | 2026-05-13(수) | ELF lazy loading과 page fault 진입 경로 복구 | `pintos/userprog/process.c`, `pintos/userprog/exception.c`, `pintos/vm/vm.c`, `pintos/vm/anon.c` | lazy load aux 구조체, `load_segment()`, `lazy_load_segment()`, `anon_initializer()`, `vm_try_handle_fault()`, `page_fault()` | 구현 완료. aux 생성/해제, file read/zero fill, SPT lookup, writable 검사, claim 성공/실패 경로가 연결됨 |
 | 2026-05-14(목) | pair-a를 통합 기준선으로 선정하고 pair-b 구현 요소 중 유지할 항목 정리 | `pintos/userprog/process.c`, `pintos/userprog/exception.c`, `pintos/include/vm/anon.h`, `pintos/include/vm/vm.h`, `pintos/vm/vm.c`, `pintos/vm/anon.c` | - pair-a 기준: lazy load aux 구조체, `load_segment()`, `lazy_load_segment()`, `vm_try_handle_fault()`, `page_fault()`<br><br>- pair-b에서 반영/검토한 항목: `vm_anon_init()`, `anon_swap_in()`, `anon_swap_out()`, `anon_destroy()`, `struct anon_page` swap 관련 필드<br><br>- 후속 보류: eviction과 fork/mmap에서 swap 상태를 실제로 사용하는 흐름 | pair-a 기준으로 통합할 내용을 확정하고, anon swap 상태는 후속 eviction 단계에서 다시 검증한다. `team` 반영과 로컬 브랜치 동기화는 15일 오전에 완료한다. |
 | 2026-05-15(금) | 오후~야간: SPT kill/cleanup과 stack growth 작성 | `pintos/vm/vm.c`, `pintos/include/vm/vm.h`, `pintos/userprog/syscall.c`, `pintos/include/threads/thread.h`, 필요 시 `pintos/userprog/process.c` | `supplemental_page_table_kill()`, `vm_dealloc_page()`, `vm_stack_growth()`, `vm_try_handle_fault()` stack 후보 분기, syscall 진입 시 user `rsp` 저장, VM-aware user buffer validation 최소 보완 | 오늘 안에 닫을 범위는 exit cleanup 안정화와 stack growth 계열 테스트 진입 가능 상태로 제한한다. 확인 테스트는 `pt-grow-stack`, `pt-grow-stk-sc`, `pt-grow-bad`, 기본 `args-*`/`read-*` 회귀를 우선한다. `supplemental_page_table_copy()`와 fork 복구는 오늘 목표에서 제외한다. |
-| 2026-05-16(토) | SPT copy와 fork 기반 page lifecycle 복구, frame table 설계 착수 | `pintos/vm/vm.c`, `pintos/include/vm/vm.h`, `pintos/userprog/process.c` | `supplemental_page_table_copy()`, uninit page 복제, loaded anon page 복제, `process_fork()`, `__do_fork()`, frame table 자료구조 초안 | 15일 cleanup/stack growth 결과를 기준으로 fork 회귀를 복구한다. frame table은 eviction 구현 전 소유권과 list/lock 구조만 먼저 확정한다. |
-| 2026-05-18(월) | mmap/munmap 기본과 file-backed page 등록 | `pintos/userprog/syscall.c`, `pintos/vm/file.c`, `pintos/include/vm/file.h`, `pintos/include/threads/thread.h` | `mmap()`, `munmap()`, `do_mmap()`, `do_munmap()`, `file_backed_initializer()`, `file_backed_swap_in()`, `file_backed_destroy()`, mmap range metadata | SPT copy/kill과 stack growth가 정리된 뒤 진입. fd close와 mapping lifetime 분리 여부를 설계 기록 |
-| 2026-05-19(화) | dirty write-back, frame eviction, swap 통합 | `pintos/userprog/syscall.c`, `pintos/vm/vm.c`, `pintos/vm/anon.c`, `pintos/vm/file.c`, `pintos/userprog/process.c` | dirty bit 확인, `file_write_at()` write-back, `vm_get_victim()`, `vm_evict_frame()`, `anon_swap_in()`, `anon_swap_out()`, `file_backed_swap_out()`, swap slot bitmap | mmap lifetime이 정리된 뒤 진행. swap slot, frame, file-backed write-back 소유권을 PR에 기록 |
-| 2026-05-20(수) | VM 전체 회귀, 제출 안정화, 발표/WIL 정리 | 전체 영향 파일, PR/WIL/발표 자료 | 전체 test command, 실패 로그 요약, lifecycle 체크리스트, rollback 필요한 임시 helper 목록 | 실제 실행 결과 중심으로 통과/실패 목록을 정리하고, 남은 실패는 원인/재현 명령/다음 조치를 기록 |
+| 2026-05-16(토) | SPT copy와 fork 기반 page lifecycle 복구, frame table 자료구조 초안 | `pintos/vm/vm.c`, `pintos/include/vm/vm.h`, `pintos/userprog/process.c`, 필요 시 `pintos/vm/uninit.c`, `pintos/include/userprog/process.h` | `supplemental_page_table_copy()`, lazy `VM_UNINIT` page 복제, loaded anon page 복제, aux 복제/해제 정책, `process_fork()`, `__do_fork()`, `struct frame` list element, frame list/lock 초안 | 15일 cleanup/stack growth 결과를 기준으로 fork 회귀를 복구한다. mmap, munmap, eviction 본 구현은 넣지 않고, frame table은 eviction 전 소유권과 list/lock 구조 및 `vm_get_frame()` 등록 위치만 확정한다. |
+| 2026-05-18(월) | mmap 등록, file-backed lazy read, eviction skeleton | `pintos/userprog/syscall.c`, `pintos/vm/file.c`, `pintos/include/vm/file.h`, `pintos/vm/vm.c`, `pintos/include/vm/vm.h`, 필요 시 `pintos/include/threads/thread.h` | `mmap()`, `do_mmap()`, `file_backed_initializer()`, `file_backed_swap_in()`, mmap range metadata, 최소 `do_munmap()` cleanup, `vm_get_victim()`, `vm_evict_frame()` skeleton | SPT copy/kill과 stack growth가 정리된 뒤 진입한다. mmap 인자 검증, overlap 확인, file-backed lazy read를 우선 닫고, `munmap()`은 clean page cleanup이 가능한 최소 골격까지만 만든다. dirty write-back과 eviction 실제 통합은 19일로 넘긴다. |
+| 2026-05-19(화) | munmap dirty write-back, frame eviction, swap 통합 완성 | `pintos/userprog/syscall.c`, `pintos/vm/vm.c`, `pintos/vm/anon.c`, `pintos/vm/file.c`, `pintos/userprog/process.c` | `munmap()`, `do_munmap()`, `file_backed_destroy()`, dirty bit 확인, `file_write_at()` write-back, `file_backed_swap_out()`, `vm_get_victim()`, `vm_evict_frame()`, `anon_swap_in()`, `anon_swap_out()`, swap slot bitmap | mmap lifetime과 frame table skeleton이 정리된 뒤 진행한다. dirty page만 write-back하는 기준, evicted frame의 page 소유권, anon/file-backed swap 분기를 PR에 기록한다. |
+| 2026-05-20(수) | VM 전체 회귀, 제출 안정화, 발표/WIL 정리 | 전체 영향 파일, PR/WIL/발표 자료 | 전체 test command, 실패 로그 요약, lifecycle 체크리스트, rollback 필요한 임시 helper 목록 | 새 기능 추가보다 안정화와 회귀 확인을 우선한다. 실제 실행 결과 중심으로 통과/실패 목록을 정리하고, 남은 실패는 원인/재현 명령/다음 조치를 기록한다. |
 | 2026-05-21(목) | 최종 공유와 제출 | 발표 자료, WIL, GitHub Projects | 팀 발표 자료, 개인별 2분 발표 내용, WIL URL | 오전 10시 주간 공유, 정오까지 발표 자료와 WIL 제출, 오후 동료피드백/티타임 준비 |
 
 ### 6.3 공동 구현 제외일
@@ -116,7 +116,7 @@
 |------|------|------|
 | 2026-05-09(토) | 공동 구현 제외 | `fork()`, Project 2 process lifecycle, fd table 복습 |
 | 2026-05-10(일) | 공동 구현 제외 | GitBook Project 3, VM flow diagram, SPT/page fault 질문 정리 |
-| 2026-05-17(일) | 공동 구현 제외 | mmap/swap 설계 복습, 실패 로그 개인 분석, 발표/WIL 초안 작성 |
+| 2026-05-17(일) | 공동 구현 제외 | 18~20일 구현을 위한 개인 사전 학습. `mmap()`/`munmap()` syscall 요구사항, file-backed page metadata, dirty bit와 `pml4_is_dirty()`, frame eviction, anon/file-backed swap in/out 흐름을 각자 정리하고, 실패 로그 개인 분석과 발표/WIL 초안 작성을 병행 |
 
 ### 6.4 모듈 소유권 기록 규칙
 
