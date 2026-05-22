@@ -20,7 +20,7 @@
 | 2026-05-31 | 부재 | 작업 계획 없음 |
 | 2026-06-04 | 발표/최종 제출 | GPT LLM 발표, WIL 및 과제 repository 주소 제출 |
 
-MNIST 기간은 짧으므로 2026-05-22에는 교재 1~6장의 핵심을 과제 구현 관점에서 압축 학습하고, 2026-05-23부터 바로 테스트 단위 구현에 들어간다.
+MNIST 기간은 짧으므로 2026-05-22에는 교재 1장부터 4.2장까지 학습한 내용을 기준으로 과제 구조와 핵심 개념을 정리한다. 2026-05-23에는 4장 나머지, 5장, 6장의 핵심을 학습하면서 기본 layer 구현을 병행한다.
 
 ---
 
@@ -28,10 +28,10 @@ MNIST 기간은 짧으므로 2026-05-22에는 교재 1~6장의 핵심을 과제 
 
 | 날짜 | 목표 | 세부 작업 | 확인할 테스트/산출물 |
 |------|------|-----------|----------------------|
-| 05-22(금) | 과제 구조 파악 및 핵심 개념 압축 학습 | `README.md`, `REPORT.md`, `src/`, `tests/` 구조 확인. shape와 행렬곱, 뉴런/퍼셉트론, `Affine -> ReLU -> Softmax`, loss, gradient, 오차역전파, SGD/Adam 흐름 학습 | 구현 순서 메모, 막힌 개념 정리 |
-| 05-23(토) | 기본 layer와 optimizer 구현 | `ReLU`, `Softmax`, `Affine`, `cross_entropy_loss`, `SGD`, `Adam` 구현. 각 함수의 input/output shape와 backward gradient shape 확인 | `test_relu.py`, `test_softmax.py`, `test_affine.py`, `test_cross_entropy_loss.py`, `test_sgd.py`, `test_adam.py` |
+| 05-22(금) | 과제 구조 파악 및 교재 1~4.2장 학습 | `README.md`, `REPORT.md`, `src/`, `tests/` 구조 확인. 교재 1장~4.2장 기준으로 shape와 행렬곱, 뉴런/퍼셉트론, `Affine -> ReLU -> Softmax`, loss 개념 정리 | 구현 순서 메모, 4.2장까지 학습 기록, 막힌 개념 정리 |
+| 05-23(토) | 4장 나머지/5~6장 학습 + 기본 구현 병행 | 교재 4장 나머지, 5장 오차역전파법, 6장 optimizer/BatchNorm/Dropout 핵심 학습. `ReLU`, `Softmax`, `Affine`, `cross_entropy_loss` 우선 구현. 시간이 남으면 `SGD`, `Adam`까지 구현 | `test_relu.py`, `test_softmax.py`, `test_affine.py`, `test_cross_entropy_loss.py`, 가능하면 `test_sgd.py`, `test_adam.py` |
 | 05-24(일) | 부재 | 작업 계획 없음. 전날 진행 상태와 다음 시작 위치를 남겨둔다 | 진행 로그 |
-| 05-25(월) | 네트워크/학습 구현 및 REPORT 작성 | `NeuralNetwork`, `BatchNorm`, `Dropout`, `train`, `evaluate` 구현. 전체 테스트 실행, 정확도 실험, loss curve와 학습 설정 기록, REPORT 작성 | `test_neural_network.py`, `test_batchnorm.py`, `test_dropout.py`, `test_training.py`, `test_evaluate.py`, 전체 `pytest tests/ -v`, MNIST `REPORT.md` |
+| 05-25(월) | 남은 기본 구현 보완 + 네트워크/학습 구현 및 REPORT 작성 | 05-23에 미완료된 `SGD`, `Adam`을 먼저 보완. 이후 `NeuralNetwork`, `BatchNorm`, `Dropout`, `train`, `evaluate` 구현. 전체 테스트 실행, 정확도 실험, loss curve와 학습 설정 기록, REPORT 작성 | 미완료 기본 테스트, `test_neural_network.py`, `test_batchnorm.py`, `test_dropout.py`, `test_training.py`, `test_evaluate.py`, 전체 `pytest tests/ -v`, MNIST `REPORT.md` |
 
 ### MNIST 완료 기준
 
