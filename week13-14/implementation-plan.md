@@ -12,118 +12,42 @@
 
 ## 1. 전체 일정
 
-| 기간 | 과제 | 목표 |
+| 기간 | 과제 | 목표 | 상세 문서 |
+|------|------|------|-----------|
+| 2026-05-22 ~ 2026-05-25 | MNIST 신경망 | NumPy 기반 신경망 구현, 테스트 통과, 정확도 실험, REPORT 작성 | [MNIST 구현 계획](./mnist-implementation-plan.md) |
+| 2026-05-24 | 부재 | 작업 계획 없음 | [MNIST 구현 계획](./mnist-implementation-plan.md) |
+| 2026-05-26 ~ 2026-06-03 | mini GPT LLM | BPE, Dataset, Attention, GPTModel, Train, Fine-tuning 구현 및 실험 기록 | [mini GPT 구현 계획](./mini-gpt-implementation-plan.md) |
+| 2026-05-31 | 부재 | 작업 계획 없음 | [mini GPT 구현 계획](./mini-gpt-implementation-plan.md) |
+| 2026-06-04 | 발표/최종 제출 | GPT LLM 발표, WIL 및 과제 repository 주소 제출 | 발표/제출 준비 |
+
+MNIST와 mini GPT는 구현 환경, 테스트 단위, 학습 범위가 다르므로 상세 계획은 프로젝트별 문서에서 관리한다. 이 문서는 전체 전환 시점, 공통 루틴, 우선순위를 확인하는 인덱스 역할을 한다.
+
+---
+
+## 2. 프로젝트별 완료 기준
+
+| 프로젝트 | 완료 기준 |
+|----------|-----------|
+| MNIST | 관련 테스트를 단계별로 통과하고, 전체 `pytest tests/ -v`를 실행한다. test accuracy 최소 95%, 가능하면 97% 이상을 목표로 한다. `REPORT.md`에 모델 구조, 학습 설정, 실험 환경, 정확도, loss curve, 회고를 기록한다. |
+| mini GPT | BPE, Dataset, Attention, Model, Train, Fine-tuning 테스트를 단계별로 실행하고, 전체 `pytest tests/ -v`를 실행한다. BPE encode/decode 복원 예시, smoke/light 학습 결과, generation sample, fine-tuning 결과를 `REPORT.md`에 기록한다. |
+
+---
+
+## 3. 협업 구현 방식과 일반 시간표
+
+2026-05-25까지 MNIST 구현은 쿼드 프로그래밍으로 진행한다. 2026-05-26부터 2026-06-03까지 mini GPT 구현은 각자 개인 브랜치에서 일정에 맞춰 진행하고, 팀 코어타임에 구현 결과를 비교한 뒤 합의한 내용을 main에 병합한다.
+
+| 시간 | 활동 | 기준 |
 |------|------|------|
-| 2026-05-22 ~ 2026-05-25 | MNIST 신경망 | NumPy 기반 신경망 구현, 테스트 통과, 정확도 실험, REPORT 작성 |
-| 2026-05-24 | 부재 | 작업 계획 없음 |
-| 2026-05-26 ~ 2026-06-03 | mini GPT LLM | BPE, Dataset, Attention, GPTModel, Train, Fine-tuning 구현 및 실험 기록 |
-| 2026-05-31 | 부재 | 작업 계획 없음 |
-| 2026-06-04 | 발표/최종 제출 | GPT LLM 발표, WIL 및 과제 repository 주소 제출 |
+| 10:00-11:50 | 개인 학습 | 당일 구현 테스트에 필요한 교재 범위와 shape 흐름을 먼저 정리 |
+| 13:00-14:00 | 학습 내용 토의 | 각자 이해한 개념, 테스트 요구사항, 구현 리스크 공유 |
+| 14:00-18:00 | 개인 구현 | 개인 브랜치에서 당일 테스트를 최소 1회 실행하고 결과 확보 |
+| 19:00-20:00 | 구현 결과 비교 | 구현 방식, 테스트 결과, shape 흐름, 실패 원인 비교 |
+| 20:00-21:00 | 병합 후보 결정 및 main 반영 | 설명 가능하고 유지보수하기 쉬운 구현을 기준으로 합의 |
+| 21:00-22:00 | 병합 후 테스트/수정/기록 | main에서 당일 테스트를 다시 실행하고 실패 보완, REPORT/WIL 메모 |
+| 22:00 이후 | 개인 학습 및 복습 | 당일 구현이 전체 흐름에서 차지하는 위치와 다음날 학습 범위 정리 |
 
-MNIST 기간은 짧으므로 2026-05-22에는 교재 1장부터 4.2장까지 학습한 내용을 기준으로 과제 구조와 핵심 개념을 정리한다. 2026-05-23에는 4장 나머지, 5장, 6장의 핵심을 학습하면서 기본 layer 구현을 병행한다.
-
----
-
-## 2. MNIST 구현 계획
-
-| 날짜 | 목표 | 세부 작업 | 확인할 테스트/산출물 |
-|------|------|-----------|----------------------|
-| 05-22(금) | 과제 구조 파악 및 교재 1~4.2장 학습 | `README.md`, `REPORT.md`, `src/`, `tests/` 구조 확인. 교재 1장~4.2장 기준으로 shape와 행렬곱, 뉴런/퍼셉트론, `Affine -> ReLU -> Softmax`, loss 개념 정리 | 구현 순서 메모, 4.2장까지 학습 기록, 막힌 개념 정리 |
-| 05-23(토) | 4장 나머지/5~6장 학습 + 기본 구현 병행 | 교재 4장 나머지, 5장 오차역전파법, 6장 optimizer/BatchNorm/Dropout 핵심 학습. `ReLU`, `Softmax`, `Affine`, `cross_entropy_loss` 우선 구현. 시간이 남으면 `SGD`, `Adam`까지 구현 | `test_relu.py`, `test_softmax.py`, `test_affine.py`, `test_cross_entropy_loss.py`, 가능하면 `test_sgd.py`, `test_adam.py` |
-| 05-24(일) | 부재 | 작업 계획 없음. 전날 진행 상태와 다음 시작 위치를 남겨둔다 | 진행 로그 |
-| 05-25(월) | 남은 기본 구현 보완 + 네트워크/학습 구현 및 REPORT 작성 | 05-23에 미완료된 `SGD`, `Adam`을 먼저 보완. 이후 `NeuralNetwork`, `BatchNorm`, `Dropout`, `train`, `evaluate` 구현. 전체 테스트 실행, 정확도 실험, loss curve와 학습 설정 기록, REPORT 작성 | 미완료 기본 테스트, `test_neural_network.py`, `test_batchnorm.py`, `test_dropout.py`, `test_training.py`, `test_evaluate.py`, 전체 `pytest tests/ -v`, MNIST `REPORT.md` |
-
-### MNIST 구현 모듈 순서
-
-구현 코드는 교재를 참고할 수 있으므로, 실제 일정은 테스트 실행과 실패 원인 추적 시간을 넉넉히 확보하는 방향으로 잡는다. 의존성이 낮은 기본 연산 모듈을 먼저 통과시키고, 이후 optimizer, 네트워크 구성, 정규화/드롭아웃, 학습 루프 순서로 진행한다.
-
-| 순서 | 구현 모듈 | 핵심 확인 내용 | 확인 테스트 | 배정 |
-|------|-----------|----------------|-------------|------|
-| 1 | `ReLU.forward/backward` | 양수 통과, 음수 차단, backward mask 처리 | `pytest tests/test_relu.py -v` | 토요일 |
-| 2 | `Softmax.forward/backward` | 확률 분포 변환, batch 단위 안정적 계산 | `pytest tests/test_softmax.py -v` | 토요일 |
-| 3 | `Affine.forward/backward` | 행렬곱, bias 더하기, `dW/db/dx` shape 확인 | `pytest tests/test_affine.py -v` | 토요일 |
-| 4 | `cross_entropy_loss` | 정답 label 기준 loss 계산, numerical stability 확인 | `pytest tests/test_cross_entropy_loss.py -v` | 토요일 |
-| 5 | `SGD.update` | learning rate 기반 parameter update | `pytest tests/test_sgd.py -v` | 월요일 |
-| 6 | `Adam.update` | momentum, variance, bias correction, optimizer state 확인 | `pytest tests/test_adam.py -v` | 월요일 |
-| 7 | `NeuralNetwork` | layer 순서 구성, forward/loss/backward/update 연결 | `pytest tests/test_neural_network.py -v` | 월요일 |
-| 8 | `BatchNorm.forward/backward` | train/eval 분기, running mean/var, gradient 계산 | `pytest tests/test_batchnorm.py -v` | 월요일 |
-| 9 | `Dropout.forward/backward` | train/eval 동작 분리, mask 적용 | `pytest tests/test_dropout.py -v` | 월요일 |
-| 10 | `train` | epoch/batch loop, loss 기록, optimizer update | `pytest tests/test_training.py -v` | 월요일 |
-| 11 | `evaluate` | 추론 모드 정확도 계산 | `pytest tests/test_evaluate.py -v` | 월요일 |
-| 12 | 전체 테스트/실험/REPORT | 전체 회귀 확인, 정확도/loss curve 기록 | `pytest tests/ -v` | 월요일 |
-
-### 토요일 기본 모듈 완료 기록
-
-토요일에는 약 4시간 동안 의존성이 낮은 기본 모듈 4개를 구현하고 각 단위 테스트를 확인했다.
-
-| 완료 모듈 | 확인 테스트 |
-|-----------|-------------|
-| `ReLU.forward/backward` | `pytest tests/test_relu.py -v` |
-| `Softmax.forward/backward` | `pytest tests/test_softmax.py -v` |
-| `Affine.forward/backward` | `pytest tests/test_affine.py -v` |
-| `cross_entropy_loss` | `pytest tests/test_cross_entropy_loss.py -v` |
-
-### 월요일 오전 Chapter 6 리뷰
-
-월요일 오전에는 오후 구현 전에 Chapter 6의 optimizer, BatchNorm, Dropout 개념과 테스트 리스크를 먼저 맞춘다.
-
-| 시간 | 리뷰 내용 |
-|------|-----------|
-| 10:00-10:30 | `SGD`, `Adam` update 식, optimizer state, bias correction 확인 |
-| 10:30-11:20 | `BatchNorm.forward/backward` 입력/출력 shape, gradient shape, running mean/var, train/eval 차이 확인 |
-| 11:20-11:50 | `Dropout.forward/backward` mask 적용, train/eval 차이 확인 |
-| 11:50-12:00 | 오후 구현 순서와 담당 테스트 확인 |
-
-### 월요일 오후-저녁 구현 계획
-
-월요일 구현 시간은 14:00-18:00, 19:00-23:00로 나누어 사용한다. 전체 테스트는 마지막에만 의존하지 않고, 주요 묶음 단위로 나누어 확인한다.
-
-| 시간 | 작업 |
-|------|------|
-| 14:00-14:30 | 토요일 구현 범위 테스트 재확인 및 실패 보완 |
-| 14:30-15:30 | `SGD.update`, `Adam.update` 구현 및 `test_sgd.py`, `test_adam.py` 실행 |
-| 15:30-16:40 | `NeuralNetwork` 구현 및 `test_neural_network.py` 실행 |
-| 16:40-17:00 | 기본 layer/loss/optimizer/network 묶음 회귀 테스트 |
-| 17:00-18:00 | `BatchNorm.forward/backward` 구현 및 `test_batchnorm.py` 실행 |
-| 19:00-20:00 | `BatchNorm` 실패 보완 또는 `Dropout.forward/backward` 구현 및 `test_dropout.py` 실행 |
-| 20:00-21:00 | `train`, `evaluate` 구현 및 `test_training.py`, `test_evaluate.py` 실행 |
-| 21:00-22:00 | 전체 `pytest tests/ -v` 실행 및 실패 보완 |
-| 22:00-22:40 | 정확도 실험, loss curve 기록 |
-| 22:40-23:00 | MNIST `REPORT.md`에 구현 현황, 테스트 결과, 실험 결과 정리 |
-
-### MNIST 완료 기준
-
-- 관련 테스트를 단계별로 통과한다.
-- 전체 `pytest tests/ -v`를 실행한다.
-- test accuracy 최소 95%, 가능하면 97% 이상을 목표로 한다.
-- `REPORT.md`에 모델 구조, 학습 설정, 실험 환경, 정확도, loss curve, 회고를 기록한다.
-- `Forward -> Loss -> Backward -> Update` 흐름을 설명할 수 있어야 한다.
-
----
-
-## 3. mini GPT 구현 계획
-
-| 날짜 | 목표 | 세부 작업 | 확인할 테스트/산출물 |
-|------|------|-----------|----------------------|
-| 05-26(화) | GPT 과제 구조 파악 및 BPE 시작 | `README.md`, `REPORT.md`, `src/`, `tests/` 구조 확인. NSMC 데이터 준비. UTF-8 byte-level BPE 구조 학습 및 구현 시작 | 구현 순서 메모, 데이터 준비 확인 |
-| 05-27(수) | BPE 완료 및 Dataset/Embedding 구현 | `BPETokenizer`의 special token, train, encode/decode, save/load 구현. `GPTDataset`, `create_dataloader`, `InputEmbedding` 구현 | `test_bpe.py`, `test_dataset.py` |
-| 05-28(목) | Attention 구현 | Q/K/V projection, head split, scaled dot-product attention, causal mask, output projection 구현 | `test_attention.py` |
-| 05-29(금) | GPT 모델 구성 요소 구현 | `LayerNorm`, `GELU`, `FeedForward`, `TransformerBlock`, `GPTModel`, `generate_text_simple` 구현 | `test_model.py` |
-| 05-30(토) | Train/Checkpoint/Generation 구현 | batch loss, loader loss, checkpoint save/load, temperature/top-k generation, pretraining loop 구현 | `test_train.py` |
-| 05-31(일) | 부재 | 작업 계획 없음. 전날 진행 상태와 실패 테스트를 남겨둔다 | 진행 로그 |
-| 06-01(월) | Fine-tuning 구현 및 밀린 작업 보완 | NSMC 감성 분류 데이터 생성, `ReviewSentimentDataset`, `GPTForSequenceClassification`, train/evaluate 구현. 05-30까지 미완료된 테스트 보완 | `test_finetune.py`, 미완료 테스트 보완 |
-| 06-02(화) | 전체 테스트 및 smoke/light 학습 | 전체 테스트 실행. smoke 설정으로 사전 학습 실행. 가능하면 light 설정 실험. generation sample, train/val loss, fine-tuning 결과 기록 | 전체 `pytest tests/ -v`, 학습 로그, 생성 샘플 |
-| 06-03(수) | REPORT 정리 및 제출 준비 | BPE, 데이터, 모델 구조, pretraining, generation, fine-tuning 결과 정리. 실패/보완 지점과 남은 리스크 기록 | GPT `REPORT.md` 초안, 발표/제출 메모 |
-
-### mini GPT 완료 기준
-
-- BPE, Dataset, Attention, Model, Train, Fine-tuning 테스트를 단계별로 실행한다.
-- 전체 `pytest tests/ -v`를 실행한다.
-- BPE encode/decode 복원 예시를 기록한다.
-- smoke 또는 light 학습 결과를 기록한다.
-- generation sample을 남긴다.
-- fine-tuning 결과를 loss 또는 accuracy 기준으로 기록한다.
-- GPT `REPORT.md`에 구현 현황, 테스트 결과, 데이터, BPE, 모델 구조, 학습/fine-tuning 결과를 포함한다.
+어려운 구현일에는 19:00-20:30까지 개인 구현을 연장하고, 20:30부터 비교/병합을 진행할 수 있다. 단, 22:00 전에는 main 기준 당일 테스트 결과와 남은 실패 원인을 남긴다.
 
 ---
 
