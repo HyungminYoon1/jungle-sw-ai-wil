@@ -68,22 +68,9 @@ MNIST 기간은 짧으므로 2026-05-22에는 교재 1장부터 4.2장까지 학
 
 ---
 
-## 5. 월요일 오후-저녁 구현 계획
+## 5. 05-25 진행 방식 기록
 
-월요일 구현 시간은 14:00-18:00, 19:00-23:00로 나누어 사용한다. 전체 테스트는 마지막에만 의존하지 않고, 주요 묶음 단위로 나누어 확인한다.
-
-| 시간 | 작업 |
-|------|------|
-| 14:00-14:30 | 토요일 구현 범위 테스트 재확인 및 실패 보완 |
-| 14:30-15:30 | `SGD.update`, `Adam.update` 구현 및 `test_sgd.py`, `test_adam.py` 실행 |
-| 15:30-16:40 | `NeuralNetwork` 구현 및 `test_neural_network.py` 실행 |
-| 16:40-17:00 | 기본 layer/loss/optimizer/network 묶음 회귀 테스트 |
-| 17:00-18:00 | `BatchNorm.forward/backward` 구현 및 `test_batchnorm.py` 실행 |
-| 19:00-20:00 | `BatchNorm` 실패 보완 또는 `Dropout.forward/backward` 구현 및 `test_dropout.py` 실행 |
-| 20:00-21:00 | `train`, `evaluate` 구현 및 `test_training.py`, `test_evaluate.py` 실행 |
-| 21:00-22:00 | 전체 `pytest tests/ -v` 실행 및 실패 보완 |
-| 22:00-22:40 | 정확도 실험, loss curve 기록 |
-| 22:40-23:00 | MNIST `REPORT.md`에 구현 현황, 테스트 결과, 실험 결과 정리 |
+2026-05-25(월)는 별도 개인 시간표로 운영하지 않고 쿼드 프로그래밍으로 진행했다. 야간까지 MNIST 구현, 전체 테스트 보완, 정확도 실험, `REPORT.md` 작성에 시간을 모두 사용했다. 2026-05-26 이후의 일반 시간표는 mini GPT 구현 기간부터 적용한다.
 
 ---
 
