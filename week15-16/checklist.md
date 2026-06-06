@@ -13,7 +13,7 @@
 | 과제 공지 확인 | ☑ | AI 응용 기술을 활용한 게시판 구현 |
 | 핵심 역량 목표 수립 | ☑ | `goal.md` |
 | AI 활용 원칙 수립 | ☑ | `ai-principles.md` |
-| 개인 구현 계획 수립 | □ | 기술 스택, 일정, 기능 우선순위 |
+| 개인 구현 계획 수립 | ☑ | `implementation-plan.md` |
 | 팀 repository 접근 권한 확인 | □ | 소스코드, README 관리 |
 | 개인 branch 생성 | □ | 개인 구현 작업 기준 branch |
 | 팀 GitHub Projects 또는 개인 담당 이슈 준비 | □ | 기능/AI/문서 태스크 관리 |
@@ -26,13 +26,13 @@
 
 | 항목 | 완료 | 비고 |
 |------|:----:|------|
-| 프론트엔드 선택 | □ | React |
-| 백엔드 선택 | □ | Next.js / NestJS / FastAPI / Spring Boot 중 1개 이상 |
-| 데이터베이스 선택 | □ | PostgreSQL / MariaDB / MySQL 중 1개 이상 |
-| LLM 모델 선택 | □ | 상용 모델 |
-| RAG vector store 선택 | □ | Pinecone / FAISS / ChromaDB / pgvector 등 |
-| MCP 외부 서비스 선택 | □ | 최소 1개 실제 외부 서비스 연동 |
-| Agent 구현 방식 선택 | □ | Function calling, LangGraph 또는 유사 구조 |
+| 프론트엔드 선택 | ☑ | React |
+| 백엔드 선택 | ☑ | FastAPI |
+| 데이터베이스 선택 | ☑ | PostgreSQL |
+| LLM 모델 선택 | ☑ | OpenAI API |
+| RAG vector store 선택 | ☑ | pgvector |
+| MCP 외부 서비스 선택 | □ | 최소 1개 실제 외부 서비스 연동, 개인 아이디어 기준 확정 |
+| Agent 구현 방식 선택 | □ | OpenAI function calling 또는 LangGraph 계열 구조 검토 |
 | 로컬/클라우드 실행 환경 구성 | □ | 개발, 테스트, 데모 기준 |
 
 ---
