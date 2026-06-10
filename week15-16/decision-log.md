@@ -18,7 +18,7 @@
 
 ## 2026-06-06 - 6월 10일까지 AI 없는 기본 게시판을 먼저 구현
 
-- Status: Decided
+- Status: Superseded by 2026-06-10 decision
 - Context: RAG, MCP, Agent를 붙이기 전에 React, FastAPI, PostgreSQL 기반의 기본 게시판 요청-응답 흐름에 익숙해질 시간이 필요하다.
 - Decision: 2026-06-10까지는 AI 기능이 붙지 않은 기본 게시판 템플릿을 각자 먼저 구현한다.
 - Reason: 기본 게시판 구조를 충분히 이해하지 못한 상태에서 AI 기능을 붙이면 API, DB, 인증/인가, 화면 흐름을 설명하기 어려워진다.
@@ -28,11 +28,21 @@
 
 ## 2026-06-06 - 6월 11일부터 새 공통 repo에서 개인 branch 분기
 
-- Status: Decided
+- Status: Superseded by 2026-06-10 decision
 - Context: 6월 10일까지 각자 기본 게시판 구현에 익숙해진 뒤, 6월 11일부터는 팀 공통 템플릿을 기준으로 AI 기능을 확장해야 한다.
 - Decision: 2026-06-11부터 새 팀 공통 repository의 main을 기준으로 각자 개인 branch를 분기한다.
 - Reason: 공통 템플릿을 기준으로 시작하면 기본 게시판 구조는 맞추면서도, 개인 branch에서 각자 주제에 맞는 AI 기능을 독립적으로 구현할 수 있다.
 - Consequence: 개인별 구현 결과를 비교하기 쉬워진다. 다만 branch 분기 이후에는 각자 구현 방향이 달라지므로 개인 branch 관리와 README 정리가 중요하다.
+
+---
+
+## 2026-06-10 - 연습용 기본 게시판 구현을 6월 12일까지 연장
+
+- Status: Decided
+- Context: 원래 2026-06-10까지 각자 AI 기능이 붙지 않은 연습용 기본 게시판을 만들기로 했으나, Next.js, FastAPI, PostgreSQL 기반 게시판 흐름을 더 충분히 익힐 시간이 필요하다.
+- Decision: 각자 연습용 기본 게시판 만들기를 2026-06-12까지 진행한다. 새 팀 공통 repository에서 개인 branch를 분기해 AI 기능을 붙이는 일정은 2026-06-13 이후로 조정한다.
+- Reason: AI 기능을 붙이기 전에 CRUD, 검색, 페이징, 인증, DB 연결 흐름을 각자 직접 구현하고 설명 가능한 수준으로 확보하기 위해서다.
+- Consequence: RAG/MCP/Agent 구현 시작은 늦어지지만, 기본 게시판 구조 이해와 사용자 흐름 점검을 우선할 수 있다. 2026-06-12까지는 연습용 기본 게시판 완성과 점검에 집중한다.
 
 ---
 
