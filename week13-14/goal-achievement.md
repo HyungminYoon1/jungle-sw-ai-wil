@@ -4,7 +4,7 @@
 >
 > 기준 기간: 2026-05-22 ~ 2026-06-04
 >
-> 기준 결과물: `local/week13-14_llm_study_results/week13-team-05-mnist-lab`, `local/week13-14_llm_study_results/week14-team-05-gpt-lab`
+> 기준 결과물: 로컬 MNIST 실습 결과물, 로컬 mini GPT 실습 결과물
 >
 > 산정 기준: `week13-14/goal.md`의 달성률 산식
 >

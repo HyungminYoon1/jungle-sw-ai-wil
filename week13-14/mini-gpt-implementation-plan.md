@@ -40,7 +40,7 @@ mini GPT는 교재 전체를 먼저 완독하고 구현에 들어가는 방식�
 | 05-30(토) | 5.1 텍스트 생성 모델 평가하기, 5.2 LLM 훈련하기, 5.3 디코딩 전략, 5.4 파이토치로 모델 로드하고 저장하기 | logits에서 cross entropy loss 계산, train/val loss, temperature, top-k sampling, checkpoint 저장/로드 흐름 이해 | batch loss, loader loss, checkpoint save/load, generation, pretraining loop 개인 구현. 실패 테스트와 구현 쟁점 기록 |
 | 05-31(일) | 5장 구현 범위 재확인. 특히 5.2 `train_model_simple`, 5.3 top-k/temperature, 5.4 checkpoint 흐름 복습 | 각자 작성한 `train.py`를 교재 구조와 비교하고, 리뷰에서 설명할 수 있게 정리 | `src/train.py` 개인 구현 마무리. `evaluate_model`, generation, checkpoint/resume, train/eval 모드 전환 설명 메모 |
 | 06-01(월) | 오전에는 5장 구현 리뷰, 오후에는 6.1 미세 튜닝 방법, 6.2 데이터셋 준비, 6.3 데이터 로더, 6.5 분류 헤드 추가 | 오전: `train.py` 구조와 edge case 합의. 오후: GPT backbone 위에 classification head를 붙이는 방식과 문장 대표 hidden state 선택 이해 | 오전 main 기준 `train.py` 병합. 오후 `ReviewSentimentDataset`, `GPTForSequenceClassification` 우선 구현 |
-| 06-02(화) | 6.6 분류 손실과 정확도, 6.7 지도 학습 데이터로 미세 튜닝. 이후 실험 runner와 Colab 저장 정책 재확인 | fine-tuning train/evaluate 루프를 마감하고, 공식 실험은 Smoke/Light/Basic을 분리해 기록한다. 산출물은 Google Drive에 저장하고 `/content`와 `local/`은 임시로 본다 | `train_epoch_sentiment`, `evaluate_sentiment`, A/B/C/D runner, Drive 저장 경로 확인 |
+| 06-02(화) | 6.6 분류 손실과 정확도, 6.7 지도 학습 데이터로 미세 튜닝. 이후 실험 runner와 Colab 저장 정책 재확인 | fine-tuning train/evaluate 루프를 마감하고, 공식 실험은 Smoke/Light/Basic을 분리해 기록한다. 산출물은 Google Drive에 저장하고 Colab 임시 경로와 로컬 임시 경로는 임시 저장소로 본다 | `train_epoch_sentiment`, `evaluate_sentiment`, A/B/C/D runner, Drive 저장 경로 확인 |
 | 06-03(수) | 1~6장 중 REPORT 설명에 필요한 부분만 재확인 | 구현 설명보다 최종 수치 취합, best checkpoint 선택 근거, D4 test 결과, 실패/미실행 사유 정리에 집중한다 | A0_basic 결과, A/B/C best checkpoint, D4 test 결과, REPORT 반영 |
 | 06-04(목) | 발표용 개념과 결과 해석만 재확인 | 새 실험이나 수치 변경 없이, 모델 구조와 실험 결과를 설명할 수 있게 준비한다 | 발표 메모, 예상 질문 답변 |
 

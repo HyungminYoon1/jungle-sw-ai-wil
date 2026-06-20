@@ -3,7 +3,7 @@
 > 작성 시점: 주차 마무리 시점
 
 한 주가 마무리되는 시점에 목표에 대한 달성률을 핵심 역량별로 기입합니다.
-이번 평가는 `local/week9_10_pintos_threads_userprograms_implementation/week09-team-07-pintos-threads`의 문서, 커밋 로그, 코드, `pintos/userprog/build/tests/userprog/*.result` 테스트 결과를 기준으로 작성했습니다.
+이번 평가는 로컬 PintOS Threads/User Programs 구현 결과물의 문서, 커밋 로그, 코드, `pintos/userprog/build/tests/userprog/*.result` 테스트 결과를 기준으로 작성했습니다.
 
 ---
 

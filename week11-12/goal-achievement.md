@@ -3,7 +3,7 @@
 > 작성 시점: 주차 마무리 시점
 
 2주 동안 진행한 PintOS Project 3 - Virtual Memory 목표에 대한 달성률을 핵심 역량별로 기입합니다.
-이번 평가는 `local/week11-12_pintos_vm_implementation/week11-team-03-pintos-vm`의 문서, 커밋 로그, 코드, `pintos/vm/build/tests/**/*.result` 테스트 결과를 기준으로 작성했습니다.
+이번 평가는 로컬 PintOS VM 구현 결과물의 문서, 커밋 로그, 코드, `pintos/vm/build/tests/**/*.result` 테스트 결과를 기준으로 작성했습니다.
 
 ---
 

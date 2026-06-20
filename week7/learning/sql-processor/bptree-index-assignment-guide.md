@@ -10,12 +10,12 @@
 
 이 문서는 아래 자료를 기준으로 작성한다.
 
-- `local/notification/[week6] (91) 수요 코딩회 (수요일).txt`
-- `local/notification/[week6] (92) 학습 과제 (금 ~ 화요일).txt`
-- `local/notification/[week6] (93) 탐험 준비.txt`
-- `local/notification/[week7] (109) 수요 코딩회 (수요일).txt`
-- `local/notification/[week7] (110) 학습 과제 (금 ~ 화요일).txt`
-- `local/notification/[week7] (111) 탐험 준비.txt`
+- week6 수요 코딩회 공지
+- week6 학습 과제 공지
+- week6 탐험 준비 공지
+- week7 수요 코딩회 공지
+- week7 학습 과제 공지
+- week7 탐험 준비 공지
 
 중요한 점은, 6주차 구현 방식은 팀마다 달랐을 수 있다는 것이다.
 
